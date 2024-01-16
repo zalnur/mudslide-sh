@@ -1,0 +1,1 @@
+Get-Content -Raw "$($env:USERPROFILE)\agent from 12-75.csv" | ConvertFrom-Csv | % {[pscustomobject]@{First    = ($_.name -split ' ')[0]; Last     = ($_.name -split ' ')[1]; Phone = "+$(($_.{whatsapp-href} -split '=')[1])"} | Export-Csv "$($env:USERPROFILE)\Desktop\agent from 12-75-modified.csv" -Append -Force}
